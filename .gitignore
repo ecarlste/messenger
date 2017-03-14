@@ -85,7 +85,6 @@ fabric.properties
 .idea/vcs.xml
 .idea/workspace.xml
 out/
-src/
 !/.gitignore
 /messenger.iml
 /.idea/
