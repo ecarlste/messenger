@@ -2,6 +2,7 @@ package com.erikcarlsten.messenger.resources;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 
 @Path("/")
 public class CommentResource {
@@ -12,9 +13,9 @@ public class CommentResource {
     }
 
     @GET
-    @Path("/{commendId}")
-    public String test2() {
-        return "Method to return comment id";
+    @Path("/{commentId}")
+    public String test2(@PathParam("commentId") long commentId) {
+        return "Method to return comment id: " + commentId;
     }
 
 }
