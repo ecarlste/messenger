@@ -12,8 +12,8 @@ public class ProfileService {
     private Map<String, Profile> profiles = DatabaseClass.getProfiles();
 
     public ProfileService() {
-        profiles.put("ecarlste", new Profile(1, "ecarlste"));
-        profiles.put("ecarlste.register", new Profile(2, "ecarlste.register"));
+        profiles.put("ecarlste", new Profile(1, "ecarlste", "Erik", "Carlsten"));
+        profiles.put("willy", new Profile(2, "willy", "John", "Carlsten"));
     }
 
     public List<Profile> getAllProfiles() {
