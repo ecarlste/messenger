@@ -50,4 +50,9 @@ public class MessageResource {
         return messageService.getMessage(id);
     }
 
+    @Path("/{messageId}/comments")
+    public CommentResource getCommentResource() {
+        return new CommentResource();
+    }
+
 }
