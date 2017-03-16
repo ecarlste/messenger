@@ -6,6 +6,8 @@ import com.erikcarlsten.messenger.service.MessageService;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 import java.util.List;
 
 @Path("/messages")
@@ -27,8 +29,11 @@ public class MessageResource {
     }
 
     @POST
-    public Message addMessage(Message message) {
-        return messageService.addMessage(message);
+    public Response addMessage(Message message) {
+        Message newMessage = messageService.addMessage(message);
+        return Response.status(Status.CREATED)
+                .entity(newMessage)
+                .build();
     }
 
     @PUT
