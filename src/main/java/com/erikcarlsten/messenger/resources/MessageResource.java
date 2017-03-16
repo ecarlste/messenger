@@ -5,8 +5,10 @@ import com.erikcarlsten.messenger.resources.beans.MessageFilterBean;
 import com.erikcarlsten.messenger.service.MessageService;
 
 import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -30,9 +32,13 @@ public class MessageResource {
     }
 
     @POST
-    public Response addMessage(Message message) throws URISyntaxException {
+    public Response addMessage(Message message, @Context UriInfo uriInfo) throws URISyntaxException {
         Message newMessage = messageService.addMessage(message);
-        return Response.created(new URI("/messenger/webapi/messages/" + newMessage.getId()))
+
+        String newId = String.valueOf(newMessage.getId());
+        URI uri = uriInfo.getAbsolutePathBuilder().path(newId).build();
+
+        return Response.created(uri)
                 .entity(newMessage)
                 .build();
     }
