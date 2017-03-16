@@ -3,7 +3,6 @@ package com.erikcarlsten.messenger.resources;
 import com.erikcarlsten.messenger.model.Comment;
 import com.erikcarlsten.messenger.service.CommentService;
 
-import javax.print.attribute.standard.Media;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
