@@ -1,6 +1,7 @@
 package com.erikcarlsten.messenger.service;
 
 import com.erikcarlsten.messenger.database.DatabaseClass;
+import com.erikcarlsten.messenger.exception.DataNotFoundException;
 import com.erikcarlsten.messenger.model.Message;
 
 import java.util.ArrayList;
@@ -42,7 +43,13 @@ public class MessageService {
     }
 
     public Message getMessage(long id) {
-        return messages.get(id);
+        Message message = messages.get(id);
+
+        if (message == null) {
+            throw new DataNotFoundException("Message with id " + id + "not found");
+        }
+
+        return message;
     }
 
     public Message addMessage(Message message) {
